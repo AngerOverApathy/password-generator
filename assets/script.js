@@ -1,23 +1,65 @@
 // Assignment code here
 
-var charNumbSymb = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "!", "%", "&", ",", "*", "+", "-", ".", "/", "<", ">", "?","~"];
+var charNumb = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+var charSymb = ["!", "%", "&", ",", "*", "+", "-", ".", "/", "<", ">", "?","~"];
 var charLower = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var charUpper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
+function randomIndex(arr) {
+  var randomNum = Math.floor(Math.random() * arr.length);
+  var randomChar = arr[randomNum];
+
+  return randomChar;
+}
+
 function generatePassword () {
-console.log(upperCaseChar)
-// pprompt user for password criteria
+var possibleChar = [];
+var result = [];
+// prompt user for password criteria
+var confirmLength = parseInt(prompt("How many characters in your password? Choose between 8-28."));
+if(confirmLength < 8 || confirmLength >128) {
+  alert('Password must have character amount between 8 and 128.')
+  return null;
+}
+
+var confirmCharSymb = (prompt("Type YES to include special characters"));
+if(confirmCharSymb==='YES' || confirmCharSymb==='yes'){
+  possibleChar = possibleChar.concat(charSymb)
+}
+
+var confirmCharNumb = (prompt("Type YES to include numeric characters"));
+if(confirmCharNumb==='YES' || confirmCharNumb==='yes'){
+  possibleChar = possibleChar.concat(charNumb)
+}
+
+var confirmCharLower = (prompt("Type YES to include lowercase characters"));
+if(confirmCharLower==='YES' || confirmCharLower==='yes'){
+  possibleChar = possibleChar.concat(charLower)
+}
+var confirmCharUpper = (prompt("Type YES to include uppercase characters"));
+if(confirmCharUpper==='YES' || confirmCharUpper==='yes'){
+  possibleChar = possibleChar.concat(charUpper)
+}
+
+if(possibleChar.length === 0) {
+  alert('You must select one character type')
+  return null;
+}
+
+for(var i = 0; i<confirmLength; i++) {
+  var selectedChar = randomIndex(possibleChar);
+
+  result.push(selectedChar);
+}
 
 //length of pass 8-28, lowercase, uppercase, special characters
-var confirmLength = (prompt("How many characters in your password? Choose between 8-28."));
+
 //input validation
 
 //generate password
 
-
-
 //display pass
-  return "Password will go here!"
+  return result.join('');
 };
 
 
