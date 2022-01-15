@@ -12,13 +12,15 @@ function randomIndex(arr) {
   return randomChar;
 }
 
+//generate password
 function generatePassword () {
 var possibleChar = [];
 var result = [];
-// prompt user for password criteria
+
+// prompt user for password criteria: length of pass 8-28, lowercase, uppercase, special characters
 var confirmLength = parseInt(prompt("How many characters in your password? Choose between 8-28."));
-if(confirmLength < 8 || confirmLength >128) {
-  alert('Password must have character amount between 8 and 128.')
+if(confirmLength < 8 || confirmLength >28) {
+  alert('Password must have character amount between 8 and 28.')
   return null;
 }
 
@@ -51,12 +53,6 @@ for(var i = 0; i<confirmLength; i++) {
 
   result.push(selectedChar);
 }
-
-//length of pass 8-28, lowercase, uppercase, special characters
-
-//input validation
-
-//generate password
 
 //display pass
   return result.join('');
